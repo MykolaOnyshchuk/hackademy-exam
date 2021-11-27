@@ -16,6 +16,6 @@ In order to run server part of this app type
 cd backend
 ```
 while being in /hackademy-exam directory, then type
-```go
+```goland command
 go run main.go
 ```
