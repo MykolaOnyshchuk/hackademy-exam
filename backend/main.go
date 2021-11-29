@@ -48,21 +48,21 @@ func main() {
 		Methods(http.MethodPost)
 	router.HandleFunc("/user/signin", logRequest(jwtService.jwtAuth())).
 		Methods(http.MethodPost)
-	router.HandleFunc("/todo/lists", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists", logRequest(jwtService.jwtAuth(ims.AddNewToDoList))).
 		Methods(http.MethodPost)
-	router.HandleFunc("/todo/lists/*list_id*", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*", logRequest(jwtService.jwtAuth(ims.UpdateToDoList))).
 		Methods(http.MethodPut)
-	router.HandleFunc("/todo/lists/*list_id*", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*", logRequest(jwtService.jwtAuth(DeleteToDoList))).
 		Methods(http.MethodDelete)
-	router.HandleFunc("/todo/lists", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists", logRequest(jwtService.jwtAuth(GetToDoLists))).
 		Methods(http.MethodGet)
-	router.HandleFunc("/todo/lists/*list_id*/tasks", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*/tasks", logRequest(jwtService.jwtAuth(AddNewTask))).
 		Methods(http.MethodPost)
-	router.HandleFunc("/todo/lists/*list_id*/tasks/*task_id*", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*/tasks/*task_id*", logRequest(jwtService.jwtAuth(UpdateTask))).
 		Methods(http.MethodPut)
-	router.HandleFunc("/todo/lists/*list_id*/tasks/*task_id*", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*/tasks/*task_id*", logRequest(jwtService.jwtAuth(DeleteTask))).
 		Methods(http.MethodDelete)
-	router.HandleFunc("/todo/lists/*list_id*/tasks", logRequest(jwtService.jwtAuth())).
+	router.HandleFunc("/todo/lists/*list_id*/tasks", logRequest(jwtService.jwtAuth(GetTasks))).
 		Methods(http.MethodGet)
 }
 
